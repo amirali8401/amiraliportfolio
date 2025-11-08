@@ -85,44 +85,86 @@ document.getElementById('themeToggle').addEventListener('click', function() {
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectsGrid = document.getElementById('projectsGrid');
 
-// Load projects from API
-async function loadProjects(category = 'all') {
-  try {
-    const url = category === 'all' 
-      ? `${API_BASE_URL}/api/projects` 
-      : `${API_BASE_URL}/api/projects?category=${category}`;
-    
-    const response = await fetch(url);
-    const projects = await response.json();
-    
-    projectsGrid.innerHTML = '';
-    
-    projects.forEach(project => {
-      const projectCard = document.createElement('div');
-      projectCard.className = 'project-card';
-      projectCard.setAttribute('data-category', project.category);
-      
-      projectCard.innerHTML = `
-        <div class="project-image">${project.image}</div>
-        <div class="project-content">
-          <h3 class="project-title">${project.title}</h3>
-          <p class="project-description">${project.description}</p>
-          <div class="project-tags">
-            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-          </div>
-          <div class="project-links">
-            <a href="${project.demo_link}" class="project-link demo">Live Demo</a>
-            <a href="${project.code_link}" class="project-link code">Code</a>
-          </div>
-        </div>
-      `;
-      
-      projectsGrid.appendChild(projectCard);
-    });
-  } catch (error) {
-    console.error('خطا در بارگذاری پروژه‌ها:', error);
-    projectsGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">خطا در بارگذاری پروژه‌ها</p>';
+// Load projects from API with a graceful fallback to local sample data
+const SAMPLE_PROJECTS = [
+  {
+    title: 'Portfolio Website',
+    description: 'A modern, responsive portfolio website with interactive 3D elements and smooth animations.',
+    tags: ['HTML','CSS','JavaScript','Three.js'],
+    demo_link: '#',
+    code_link: '#',
+    image: '🌐',
+    category: 'web'
+  },
+  {
+    title: 'Image Processing Tool',
+    description: 'Advanced image processing tool with filters and object recognition.',
+    tags: ['Python','OpenCV'],
+    demo_link: '#',
+    code_link: '#',
+    image: '👁️',
+    category: 'python'
+  },
+  {
+    title: 'Automation Scripts',
+    description: 'Collection of Python automation scripts for file handling and scheduling.',
+    tags: ['Python','Automation'],
+    demo_link: '#',
+    code_link: '#',
+    image: '🤖',
+    category: 'python'
   }
+];
+
+async function loadProjects(category = 'all') {
+  let projects = [];
+
+  // Try API first
+  try {
+    const url = category === 'all'
+      ? `${API_BASE_URL}/api/projects`
+      : `${API_BASE_URL}/api/projects?category=${encodeURIComponent(category)}`;
+
+    const response = await fetch(url, {cache: 'no-store'});
+    if (!response.ok) throw new Error(`API returned ${response.status}`);
+    const data = await response.json();
+
+    // If API returns an array, use it. Otherwise fallback.
+    if (Array.isArray(data) && data.length > 0) {
+      projects = data;
+    } else {
+      console.warn('API returned no projects, falling back to sample data.');
+      projects = SAMPLE_PROJECTS.filter(p => category === 'all' ? true : p.category === category);
+    }
+  } catch (err) {
+    console.warn('Could not load projects from API, using sample projects. Error:', err);
+    projects = SAMPLE_PROJECTS.filter(p => category === 'all' ? true : p.category === category);
+  }
+
+  // Render projects
+  projectsGrid.innerHTML = '';
+  projects.forEach(project => {
+    const projectCard = document.createElement('div');
+    projectCard.className = 'project-card';
+    projectCard.setAttribute('data-category', project.category || 'all');
+
+    const tagsHTML = (project.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
+
+    projectCard.innerHTML = `
+      <div class="project-image">${project.image || '📁'}</div>
+      <div class="project-content">
+        <h3 class="project-title">${project.title || 'Untitled'}</h3>
+        <p class="project-description">${project.description || ''}</p>
+        <div class="project-tags">${tagsHTML}</div>
+        <div class="project-links">
+          <a href="${project.demo_link || '#'}" class="project-link demo">Live Demo</a>
+          <a href="${project.code_link || '#'}" class="project-link code">Code</a>
+        </div>
+      </div>
+    `;
+
+    projectsGrid.appendChild(projectCard);
+  });
 }
 
 // Initial load
@@ -132,7 +174,7 @@ filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    
+
     const filter = btn.getAttribute('data-filter');
     loadProjects(filter);
   });
