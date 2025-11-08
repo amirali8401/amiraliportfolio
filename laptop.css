@@ -1,0 +1,129 @@
+/* === WORLD-CLASS 3D LAPTOP ANIMATION === */
+
+.laptop-wrapper {
+  position: relative;
+  width: 420px;
+  height: 260px;
+  perspective: 2000px;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.laptop {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active-laptop {
+  transform: rotateX(15deg) rotateY(-20deg) rotateZ(0deg) !important;
+}
+
+/* --- SCREEN --- */
+.laptop-screen {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background: #000;
+  border: 6px solid #1e1e1e;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.laptop-screen::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #444 30%, #111 100%);
+  box-shadow: 0 0 3px rgba(255,255,255,0.1);
+}
+
+.laptop-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255,255,255,0.05) 48%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.05) 52%,
+    transparent 60%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* --- SCREEN CONTENT --- */
+.laptop-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing-text {
+  color: #4dff9e;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 1.3rem;
+  text-shadow: 0 0 2px rgba(77,255,158,0.4);
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+.typing-text.hidden {
+  opacity: 0;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 230px; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: #520088; }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1200px) {
+  .laptop-wrapper {
+    width: 360px;
+    height: 230px;
+  }
+}
+
+@media (max-width: 768px) {
+  .laptop-wrapper {
+    width: 300px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .laptop-wrapper {
+    width: 250px;
+    height: 160px;
+  }
+}

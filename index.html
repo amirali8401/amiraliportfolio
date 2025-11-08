@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/examples/js/loaders/GLTFLoader.js"></script>
+  <title>Amirali Habashi | Full Stack Engineer</title>
+  <meta name="description" content="Full Stack Engineer specializing in Python, Django, and modern web technologies">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="laptop.css">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" id="scrollIndicator"></div>
+
+  <!-- Background Animation -->
+  <div class="bg-animation" id="bgAnimation"></div>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">AH</div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Amirali Habashi</h1>
+      <p class="subtitle">Full Stack Engineer | Python Specialist | Always Learning & Building</p>
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+    <div class="laptop-wrapper">
+      <div class="laptop">
+        <div class="laptop-screen">
+          <div class="laptop-content">
+            <div class="typing-text" id="welcomeText">welcome to my portfolio</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div class="profile-image">
+        <div class="profile-image-inner"><img src="profile.jpg"></div>
+      </div>
+      <div class="about-text">
+        <h3>Hi, I'm Amirali! 👋</h3>
+        <p>A 20-year-old Full Stack Engineer from Iran with a deep passion for technology, creativity, and progress. I specialize in building scalable web applications and solving complex problems with clean, efficient code.</p>
+        <p>I love turning ideas into meaningful digital products that make a difference. My journey in tech is driven by curiosity and a constant desire to learn and improve.</p>
+        <p>When I'm not coding, you'll find me exploring new technologies, contributing to open source, or working on personal projects that push my boundaries.</p>
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Languages</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">2+</div>
+            <div class="stat-label">Years Coding</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2 class="section-title">My Skills</h2>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3>💻 Languages</h3>
+        <div class="skills-grid">
+          <div class="skill-item"><div class="skill-icon"><img src="icons/python.png" alt="Python"></div><div class="skill-name">Python</div></div>
+          <div class="skill-item"><div class="skill-icon"><img src="icons/letter-c.png" alt="C"></div><div class="skill-name">C</div></div>
+          <div class="skill-item"><div class="skill-icon"><img src="icons/c-.png" alt="C++"></div><div class="skill-name">C++</div></div>
+          <div class="skill-item"><div class="skill-icon"><img src="icons/php.png" alt="PHP"></div><div class="skill-name">PHP</div></div>
+          <div class="skill-item"><div class="skill-icon"><img src="icons/js.png" alt="JavaScript"></div><div class="skill-name">JavaScript</div></div>
+          <div class="skill-item"><div class="skill-icon"><img src="icons/html(1).png" alt="HTML"></div><div class="skill-name">HTML</div></div>
+          <div class="skill-item"><div class="skill-icon"><img src="icons/css-3.png" alt="CSS"></div><div class="skill-name">CSS</div></div>
+          <div class="skill-item"><div class="skill-icon"><img src="icons/text.png" alt="XML"></div><div class="skill-name">XML</div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>🛠️ Frameworks & Tools</h3>
+        <div class="skills-grid">
+          <div class="skill-item"><div class="skill-icon">🎯</div><div class="skill-name">Django</div></div>
+          <div class="skill-item"><div class="skill-icon">⚡</div><div class="skill-name">FastAPI</div></div>
+          <div class="skill-item"><div class="skill-icon">📮</div><div class="skill-name">Postman</div></div>
+          <div class="skill-item"><div class="skill-icon">👁️</div><div class="skill-name">OpenCV</div></div>
+          <div class="skill-item"><div class="skill-icon">🖼️</div><div class="skill-name">Image Processing</div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>🗄️ Databases</h3>
+        <div class="skills-grid">
+          <div class="skill-item"><div class="skill-icon">🐬</div><div class="skill-name">MySQL</div></div>
+          <div class="skill-item"><div class="skill-icon">💾</div><div class="skill-name">MiniSQL</div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3>🔧 Version Control & Testing</h3>
+        <div class="skills-grid">
+          <div class="skill-item"><div class="skill-icon">🌿</div><div class="skill-name">Git</div></div>
+          <div class="skill-item"><div class="skill-icon">✅</div><div class="skill-name">Unit Testing</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-title">My Projects</h2>
+    <div class="projects-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web Apps</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="ai">AI/ML</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="project-card" data-category="web">
+        <div class="project-image">🌐</div>
+        <div class="project-content">
+          <h3 class="project-title">Portfolio Website</h3>
+          <p class="project-description">A modern, responsive portfolio website with interactive 3D elements and smooth animations.</p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Three.js</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link demo">Live Demo</a>
+            <a href="#" class="project-link code">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="python ai">
+        <div class="project-image">👁️</div>
+        <div class="project-content">
+          <h3 class="project-title">Image Processing Tool</h3>
+          <p class="project-description">Advanced image processing tool with filters, edge detection, and object recognition capabilities.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">NumPy</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link demo">Live Demo</a>
+            <a href="#" class="project-link code">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="python">
+        <div class="project-image">🤖</div>
+        <div class="project-content">
+          <h3 class="project-title">Automation Scripts</h3>
+          <p class="project-description">Collection of Python automation scripts for file handling, data processing, and task scheduling.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Scripting</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link demo">Live Demo</a>
+            <a href="#" class="project-link code">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="web">
+        <div class="project-image">🎯</div>
+        <div class="project-content">
+          <h3 class="project-title">Django Web Application</h3>
+          <p class="project-description">Full-stack web application with authentication, database management, and REST API.</p>
+          <div class="project-tags">
+            <span class="tag">Django</span>
+            <span class="tag">Python</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">REST API</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link demo">Live Demo</a>
+            <a href="#" class="project-link code">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="python">
+        <div class="project-image">🔧</div>
+        <div class="project-content">
+          <h3 class="project-title">Raspberry Pi IoT Project</h3>
+          <p class="project-description">IoT solution for home automation with sensor monitoring and real-time data visualization.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">IoT</span>
+            <span class="tag">Raspberry Pi</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link demo">Live Demo</a>
+            <a href="#" class="project-link code">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="web">
+        <div class="project-image">⚡</div>
+        <div class="project-content">
+          <h3 class="project-title">FastAPI Backend</h3>
+          <p class="project-description">High-performance REST API with async operations, authentication, and comprehensive documentation.</p>
+          <div class="project-tags">
+            <span class="tag">FastAPI</span>
+            <span class="tag">Python</span>
+            <span class="tag">API</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link demo">Live Demo</a>
+            <a href="#" class="project-link code">Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Let's Work Together!</h3>
+        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+        <div class="contact-methods">
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <div>
+              <strong>Email</strong><br>
+              <span style="color: var(--text-secondary)">amiralihabashi8401@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📱</span>
+            <div>
+              <strong>Phone</strong><br>
+              <span style="color: var(--text-secondary)">+98 902 
+                551 8401
+              </span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div>
+              <strong>Location</strong><br>
+              <span style="color: var(--text-secondary)">Mashhad, Iran</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-status" id="formStatus"></div>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" required placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required placeholder="your.email@example.com">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" name="subject" required placeholder="What's this about?">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea name="message" required placeholder="Tell me more..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="#" class="social-link" title="GitHub">👨‍💻</a>
+      <a href="#" class="social-link" title="LinkedIn">💼</a>
+      <a href="#" class="social-link" title="Twitter">🐦</a>
+      <a href="#" class="social-link" title="Email">📧</a>
+    </div>
+    <p class="copyright">&copy; 2025 Amirali Habashi. All rights reserved. Made with 💙</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
